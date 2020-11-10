@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encode-Vizhenera</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/jQuery.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="table">
+            <input placeholder="key"></input>
+            <div class="col">
+                <div class="row">
+                    <div class="encode br col">
+                        <h3>encode</h3>
+                        <textarea rows="20" id="encode"></textarea>
+                    </div>
+                    <div class="decode br col">
+                        <h3>decode</h3>
+                        <textarea rows="20" id="decode"></textarea>
+                    </div>
+                </div>
+                <div class="result br">
+                    <h3>result</h3>
+                    <button id="btnresult">CLick</button>
+                    <div id="result" class="results">
+                        dsa
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#btnresult').on("click", function () {
+            let decode = $("#decode").val();
+            let encode = $("#encode").val();
+            if (encode.length > decode.length) {
+                console.log(encode);
+            } else if (encode.length < decode.length) {
+                console.log(decode);
+            }else{
+                alert('Поле не определено.')
+            }
+            
+        });
+    </script>
+
+</body>
+
+</html>

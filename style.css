@@ -1,0 +1,41 @@
+h3 {
+  margin: 0;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+.table {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.encode {
+  width: 100%;
+  margin: 5px;
+  text-align: center;
+}
+.decode {
+  width: 100%;
+  margin: 5px;
+  text-align: center;
+}
+.result {
+  text-align: center;
+}
+.br {
+  border: black 2px solid;
+}
+.results {
+  margin: 5px;
+  border: black 2px solid;
+}
