@@ -3,9 +3,12 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
+const encode = require("./coders/encode");
+const decode = require("./coders/decode");
+
 const express = require("express");
 const app = express();
-
+app.use(express.json());
 // our default array of dreams
 const dreams = [
   "Find and count some sheep",
@@ -23,12 +26,22 @@ app.get("/", (request, response) => {
 });
 
 // send the default array of dreams to the webpage
-app.get("/dreams", (request, response) => {
-  // express helps us take JS objects and send them as JSON
-  response.json(dreams);
+app.post('/encode', function (req, res) {
+  let r = {}
+  r = encode(req.body)
+  console.log(req.body);
+  console.log(r);
+  res.json(r);
+});
+app.post('/decode', function (req, res) {
+  let r = {}
+  r = decode(req.body)
+  console.log(req.body);
+  console.log(r);
+  res.json(decode(req.body));
 });
 
 // listen for requests :)
-const listener = app.listen(process.env.PORT, () => {
+const listener = app.listen(process.env.PORT || 3001, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });

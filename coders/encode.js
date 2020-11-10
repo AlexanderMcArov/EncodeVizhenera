@@ -1,27 +1,12 @@
 const fs = require('fs');
-const encode = ({ file, secret, newFile }) => {
-    let fileName = function () {
-        if (newFile == undefined) {
-            file = file.split('.')
-            return file[0]
-        } else {
-            return newFile
-        }
-    }
+const encode = ({ string, key }) => {
     // >>>
-    console.log('ENCODE', file, secret)
     let alfavit = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-    fs.readFile(file, 'utf8', (err, data) => {
-        if (err) throw err;
-        encodeVizhener(data)
-    });
-
-    function encodeVizhener(string) {
+    function encodeVizhener() {
         let res = ''
         string = string.toUpperCase().split('')
-        let key = secret.toUpperCase().split('')
-        // str[0%5]
+        key = key.toUpperCase().split('')
 
         for (let i = 0; i < string.length; i++) {
             let strInd = 0
@@ -34,14 +19,10 @@ const encode = ({ file, secret, newFile }) => {
             })
             res += alfavit[(strInd + keyInd) > 26 ? (strInd + keyInd) - 26 : strInd + keyInd]
         }
-        console.log(string, key);
-        console.log(res);
-
-        fs.writeFileSync(fileName() + '__encoded.txt', res);
+        key = key.join('')
+        return { result: res, key: key }
     }
-    // encodeVizhener(inputWord, keyWord)
-    // <<<<
-
+    return encodeVizhener()
 }
 
 module.exports = encode;
